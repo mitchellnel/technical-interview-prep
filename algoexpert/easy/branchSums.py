@@ -6,6 +6,7 @@ class BinaryTree:
         self.right = None
 
 
+# O(n) time | O(n) space
 def branchSums(root):
     sums = []
     branchSumsHelper(root, 0, sums)

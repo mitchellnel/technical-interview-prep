@@ -1,3 +1,4 @@
+# O(log(n)) time | O(1) space
 def nodeDepths(root):
     return nodeDepthHelper(root, 0)
 
