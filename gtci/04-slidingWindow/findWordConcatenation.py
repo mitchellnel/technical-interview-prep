@@ -33,7 +33,8 @@ def findWordConcatenation(str1, words):
 
             words_seen[curr_word] += 1
 
-            # no need to process further if the word has a higher frequency than required
+            # no need to process further if the word has a higher frequency
+            #   than required
             if words_seen[curr_word] > word_freq.get(curr_word, 0):
                 break
 
