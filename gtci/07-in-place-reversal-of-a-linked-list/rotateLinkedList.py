@@ -25,8 +25,6 @@ def rotate_list(head, rotate_amount):
         current = current.next
         list_length += 1
 
-    print(list_length)
-
     rotate_amount %= list_length
 
     # the last node's next pointer will be to the head of the list
@@ -44,7 +42,7 @@ def rotate_list(head, rotate_amount):
     # set new head
     head = current.next
 
-    # set current as the end of the list
+    # set current.next as the end of the list
     current.next = None
 
     return head
