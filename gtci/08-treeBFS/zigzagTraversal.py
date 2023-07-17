@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class TreeNode:
     def __init__(self, val):
         self.val = val
@@ -8,32 +11,46 @@ class TreeNode:
 def zigzagTraversal(root):
     traversal = []
 
-    curr_depth = -1
+    right_to_left = False
 
-    queue = [(root, 0)]
+    queue = deque([root])
     while len(queue) > 0:
-        curr_node, curr_node_depth = queue.pop(0)
+        level_size = len(queue)
+        curr_level_traversal = deque()
 
-        # check if next node we're looking at occurs in new level
-        if curr_node_depth != curr_depth:
-            # add new list for this level
-            traversal.append([])
+        for _ in range(level_size):
+            curr_node = queue.popleft()
 
-            # change the curr level we're looking at
-            curr_depth = curr_node_depth
+            # add the node to the current level based on traversal direction
+            if not right_to_left:
+                curr_level_traversal.append(curr_node.val)
+            else:
+                curr_level_traversal.appendleft(curr_node.val)
 
-        # append children to end of queue
-        if curr_node.left is not None:
-            queue.append((curr_node.left, curr_depth + 1))
-        if curr_node.right is not None:
-            queue.append((curr_node.right, curr_depth + 1))
+            # insert the children
+            if curr_node.left is not None:
+                queue.append(curr_node.left)
+            if curr_node.right is not None:
+                queue.append(curr_node.right)
 
-        # add value to the level whose list we're currently traversing
-        if curr_depth % 2 == 0:
-            # if curr_depth is even, we traverse from left to right on the level, so simply append
-            traversal[-1].append(curr_node.val)
-        else:
-            # else, we traverse from right to left on the level, so add to the front of the list
-            traversal[-1].insert(0, curr_node.val)
+        traversal.append(list(curr_level_traversal))
+
+        # reverse the traversal direction
+        right_to_left = not right_to_left
 
     return traversal
+
+
+def main():
+    root = TreeNode(12)
+    root.left = TreeNode(7)
+    root.right = TreeNode(1)
+    root.left.left = TreeNode(9)
+    root.right.left = TreeNode(10)
+    root.right.right = TreeNode(5)
+    root.right.left.left = TreeNode(20)
+    root.right.left.right = TreeNode(17)
+    print("Zigzag traversal: " + str(zigzagTraversal(root)))
+
+
+main()
