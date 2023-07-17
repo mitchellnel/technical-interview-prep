@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class TreeNode:
     def __init__(self, val):
         self.val = val
@@ -16,20 +19,38 @@ class TreeNode:
 
 
 def connect_all_level_order_siblings(root):
-    queue = [root]
+    if root is None:
+        return None
 
+    prev, curr = None, None
+    queue = deque([root])
     while len(queue) > 0:
-        curr_node = queue.pop(0)
+        curr = queue.popleft()
 
-        # append children to end of queue
-        if curr_node.left is not None:
-            queue.append(curr_node.left)
-        if curr_node.right is not None:
-            queue.append(curr_node.right)
+        # connect previous node to next node
+        if prev is not None:
+            prev.next = curr
 
-        # look at the front node's depth in the queue
-        if len(queue) != 0:
-            print(f"Connecting {curr_node.val} to {queue[0].val}")
-            curr_node.next = queue[0]
-        else:
-            curr_node.next = None
+        prev = curr
+
+        # add children of curr node to queue
+        if curr.left is not None:
+            queue.append(curr.left)
+        if curr.right is not None:
+            queue.append(curr.right)
+
+    return root
+
+
+def main():
+    root = TreeNode(12)
+    root.left = TreeNode(7)
+    root.right = TreeNode(1)
+    root.left.left = TreeNode(9)
+    root.right.left = TreeNode(10)
+    root.right.right = TreeNode(5)
+    connect_all_level_order_siblings(root)
+    root.print_tree()
+
+
+main()
