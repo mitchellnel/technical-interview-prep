@@ -15,50 +15,57 @@ def reverse_sublist(head, p, q):
     if p == q:
         return head
 
-    current = head
-    previous = None
+    curr = head
+    prev = None
 
-    node_num = 0
+    i = 0
 
     # get to node p
-    while current is not None and node_num < p:
-        previous = current
-        current = current.next
+    while curr is not None and i < p - 1:
+        prev = curr
+        curr = curr.next
 
-        node_num += 1
+        i += 1
 
-    # previous is now node p - 1
-    # it will be the node before the sublist, we need to store it to connect it to the reversed
-    #   sublist
-    node_before_sublist = previous
+    # after skipping p-1 nodes, curr now points to p
 
-    # current is now node p
-    # it will be the last node in the sublist, we need to store it to connect the reversed sublist
-    #   to the rest of the list
-    last_node_in_sublist = current
+    # we are interested in three parts of the linked list:
+    #   - the part before the pth node
+    #   - the part between p and q
+    #   - the part after the qth node
 
-    # reverse until q
-    while current is not None and node_num < q + 1:
-        # temp store the next node to look at
-        next = current.next
+    # we need to connect the last node of the first part to the start of the
+    #   reversed linked list
+    last_node_before_sublist = prev
 
-        # reverse the current node
-        current.next = previous
-        previous = current
+    # we need to connect the last node of the sublist to the start of the part
+    #   after the qth node
+    last_node_in_sublist = curr
 
-        # look at the next node
-        current = next
-        node_num += 1
+    # reverse the nodes in between p and q
+    i = 0
+    while curr is not None and i < q - p + 1:
+        temp = curr.next
 
-    # connect the node before the sublist to the reversed sublist
-    if node_before_sublist is not None:
-        # the first node of the sublist is now previous
-        node_before_sublist.next = previous
+        curr.next = prev
+        prev = curr
+
+        curr = temp
+
+        i += 1
+
+    # connect reversed sublist to the part of the linked list before the
+    #   pth node
+    if last_node_before_sublist is not None:
+        # prev is currently the first node of the reversed sublist
+        last_node_before_sublist.next = prev
     else:
-        head = previous
+        # this means that p == 1, i.e. we are changing the first node of the
+        #   linked list
+        head = prev
 
-    # connect last node in the reversed sublist to the rest of the list
-    last_node_in_sublist.next = current
+    # connect reversed sublist to last part
+    last_node_in_sublist.next = curr
 
     return head
 
