@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class TreeNode:
     def __init__(self, val):
         self.val = val
@@ -10,9 +13,9 @@ def reverse_level_order_traversal(root):
 
     curr_depth = -1
 
-    queue = [(root, 0)]
+    queue = deque([(root, 0)])
     while len(queue) > 0:
-        curr_node, curr_node_depth = queue.pop(0)
+        curr_node, curr_node_depth = queue.popleft()
 
         # check if next node we're looking at occurs in new level
         if curr_node_depth != curr_depth:
@@ -32,3 +35,16 @@ def reverse_level_order_traversal(root):
         traversal[0].append(curr_node.val)
 
     return traversal
+
+
+def main():
+    root = TreeNode(12)
+    root.left = TreeNode(7)
+    root.right = TreeNode(1)
+    root.left.left = TreeNode(9)
+    root.right.left = TreeNode(10)
+    root.right.right = TreeNode(5)
+    print("Reverse level order traversal: " + str(reverse_level_order_traversal(root)))
+
+
+main()
