@@ -7,7 +7,7 @@ class TreeNode:
 
 class MaxSumPath:
     def __init__(self):
-        self.max_sum = 0
+        self.max_sum = float("-inf")
 
     def get_max_sum_path(self, root):
         self._calculate_max_sum_path(root)
@@ -19,8 +19,11 @@ class MaxSumPath:
         if tree is None:
             return 0
 
-        left_max_sum = self._calculate_max_sum_path(tree.left)
-        right_max_sum = self._calculate_max_sum_path(tree.right)
+        # recursive step
+
+        # ignore paths with negative sums
+        left_max_sum = max(self._calculate_max_sum_path(tree.left), 0)
+        right_max_sum = max(self._calculate_max_sum_path(tree.right), 0)
 
         local_max_sum = left_max_sum + right_max_sum + tree.val
 
