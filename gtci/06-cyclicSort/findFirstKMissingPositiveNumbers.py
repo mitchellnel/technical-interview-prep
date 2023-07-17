@@ -15,8 +15,14 @@ def find_first_k_missing_positive_numbers(nums, k):
         else:
             curr_idx += 1
 
+    # use a hashmap to check if a number out of range appears in the array due to O(1)
+    #   lookup time
+    appears = {}
+
     # look for missing numbers
     for idx, num in enumerate(nums):
+        appears[num] = True
+
         # make sure to only find first k
         if len(missing) < k and idx != num - 1:
             missing.append(idx + 1)
@@ -27,7 +33,7 @@ def find_first_k_missing_positive_numbers(nums, k):
     )  # other missing nums will be those beyond our positive range
     while len(missing) < k:
         # check that our candidate does not exist in nums
-        if candidate_number not in nums:
+        if candidate_number not in appears:
             missing.append(candidate_number)
         candidate_number += 1
 
