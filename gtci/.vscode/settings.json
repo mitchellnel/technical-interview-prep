@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    "*.hs": "haskell",
+    "cassert": "cpp",
+    "vector": "cpp",
+    "iostream": "cpp",
+    "unordered_set": "cpp",
+    "limits": "cpp",
+    "algorithm": "cpp",
+    "ostream": "cpp"
+  }
+}
