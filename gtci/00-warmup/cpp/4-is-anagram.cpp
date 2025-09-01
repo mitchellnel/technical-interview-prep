@@ -23,33 +23,14 @@ class Solution {
     }
 };
 
+#include <cassert>
+
 int main() {
     Solution sol;
-
-    std::string s1 = "listen";
-    std::string t1 = "silent";
-    std::cout << std::boolalpha << sol.isAnagram(s1, t1)
-              << std::endl;  // Expected output: True
-
-    std::string s2 = "hello";
-    std::string t2 = "world";
-    std::cout << std::boolalpha << sol.isAnagram(s2, t2)
-              << std::endl;  // Expected output: False
-
-    std::string s3 = "anagram";
-    std::string t3 = "nagaram";
-    std::cout << std::boolalpha << sol.isAnagram(s3, t3)
-              << std::endl;  // Expected output: True
-
-    std::string s4 = "rat";
-    std::string t4 = "car";
-    std::cout << std::boolalpha << sol.isAnagram(s4, t4)
-              << std::endl;  // Expected output: False
-
-    std::string s5 = "";
-    std::string t5 = "";
-    std::cout << std::boolalpha << sol.isAnagram(s5, t5)
-              << std::endl;  // Expected output: True
-
+    assert(sol.isAnagram("listen", "silent") == true);
+    assert(sol.isAnagram("hello", "world") == false);
+    assert(sol.isAnagram("anagram", "nagaram") == true);
+    assert(sol.isAnagram("rat", "car") == false);
+    std::cout << "All test cases passed." << std::endl;
     return 0;
 }

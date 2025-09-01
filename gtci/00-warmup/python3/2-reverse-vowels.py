@@ -1,4 +1,4 @@
-def reverseVowels(self, s: str) -> str:
+def reverseVowels(s: str) -> str:
     s_list = list(s)
     vowels = {"a", "e", "i", "o", "u"}
     left = 0
@@ -20,6 +20,7 @@ def reverseVowels(self, s: str) -> str:
 
 
 if __name__ == "__main__":
-    print(reverseVowels(None, "hello"))  # holle
-    print(reverseVowels(None, "AEOIU"))  # UOIEA
-    print(reverseVowels(None, "DesignGUrus"))  # DusUgnGires
+    assert reverseVowels("hello") == "holle"
+    assert reverseVowels("AEIOU") == "UOIEA"
+    assert reverseVowels("DesignGUrus") == "DusUgnGires"
+    print("All test cases passed.")

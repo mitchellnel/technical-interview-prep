@@ -1,4 +1,4 @@
-def mySqrt(self, x: int) -> int:
+def mySqrt(x: int) -> int:
     if x < 2:
         return x
 
@@ -20,7 +20,8 @@ def mySqrt(self, x: int) -> int:
 
 
 if __name__ == "__main__":
-    print(mySqrt(4))  # Output: 2
-    print(mySqrt(8))  # Output: 2
-    print(mySqrt(0))  # Output: 0
-    print(mySqrt(1))  # Output: 1
+    assert mySqrt(4) == 2
+    assert mySqrt(8) == 2
+    assert mySqrt(0) == 0
+    assert mySqrt(1) == 1
+    print("All test cases passed.")

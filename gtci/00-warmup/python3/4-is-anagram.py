@@ -22,22 +22,8 @@ def isAnagram(s, t):
 
 
 if __name__ == "__main__":
-    s1 = "listen"
-    t1 = "silent"
-    print(isAnagram(s1, t1))  # Expected output: True
-
-    s2 = "hello"
-    t2 = "world"
-    print(isAnagram(s2, t2))  # Expected output: False
-
-    s3 = "anagram"
-    t3 = "nagaram"
-    print(isAnagram(s3, t3))  # Expected output: True
-
-    s4 = "rat"
-    t4 = "car"
-    print(isAnagram(s4, t4))  # Expected output: False
-
-    s5 = ""
-    t5 = ""
-    print(isAnagram(s5, t5))  # Expected output: True
+    assert isAnagram("listen", "silent") == True
+    assert isAnagram("hello", "world") == False
+    assert isAnagram("anagram", "nagaram") == True
+    assert isAnagram("rat", "car") == False
+    print("All test cases passed.")

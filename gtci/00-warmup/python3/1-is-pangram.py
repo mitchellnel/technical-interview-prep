@@ -14,6 +14,7 @@ def checkIfPangram(sentence):
 
 
 if __name__ == "__main__":
-    print(checkIfPangram("The quick brown fox jumps over the lazy dog"))  # True
-    print(checkIfPangram("You shall not pass!"))  # False
-    print(checkIfPangram("Pack my box with five dozen liquor jugs."))  # True
+    assert checkIfPangram("The quick brown fox jumps over the lazy dog") == True
+    assert checkIfPangram("You shall not pass!") == False
+    assert checkIfPangram("Pack my box with five dozen liquor jugs.") == True
+    print("All test cases passed.")

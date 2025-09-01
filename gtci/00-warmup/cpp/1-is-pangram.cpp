@@ -21,16 +21,17 @@ class Solution {
     }
 };
 
+#include <cassert>
+
 int main() {
     Solution sol;
-    string sentence = "The quick brown fox jumps over the lazy dog";
-    cout << (sol.checkIfPangram(sentence) ? "true" : "false")
-         << endl;  // Output: true
-    sentence = "Hello, World!";
-    cout << (sol.checkIfPangram(sentence) ? "true" : "false")
-         << endl;  // Output: false
-    sentence = "abcdefghijklmnopqrstuvwxyz";
-    cout << (sol.checkIfPangram(sentence) ? "true" : "false")
-         << endl;  // Output: true
+    assert(sol.checkIfPangram("The quick brown fox jumps over the lazy dog") ==
+           true);
+    assert(sol.checkIfPangram("Hello, World!") == false);
+    assert(sol.checkIfPangram("abcdefghijklmnopqrstuvwxyz") == true);
+    assert(sol.checkIfPangram("You shall not pass!") == false);
+    assert(sol.checkIfPangram("Pack my box with five dozen liquor jugs.") ==
+           true);
+    std::cout << "All test cases passed." << std::endl;
     return 0;
 }

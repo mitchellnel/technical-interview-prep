@@ -25,10 +25,14 @@ class Solution {
     }
 };
 
+#include <cassert>
+
 int main() {
     Solution sol;
-    std::cout << sol.mySqrt(4) << std::endl;  // Output: 2
-    std::cout << sol.mySqrt(8) << std::endl;  // Output: 2
-    std::cout << sol.mySqrt(0) << std::endl;  // Output: 0
-    std::cout << sol.mySqrt(1) << std::endl;  // Output: 1
+    assert(sol.mySqrt(4) == 2);
+    assert(sol.mySqrt(8) == 2);
+    assert(sol.mySqrt(0) == 0);
+    assert(sol.mySqrt(1) == 1);
+    std::cout << "All test cases passed." << std::endl;
+    return 0;
 }

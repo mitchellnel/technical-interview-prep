@@ -29,13 +29,13 @@ class Solution {
     }
 };
 
+#include <cassert>
+
 int main() {
     Solution sol;
-    std::string s = "hello";
-    std::cout << sol.reverseVowels(s) << std::endl;  // Output: "holle"
-    s = "AEIOUD";
-    std::cout << sol.reverseVowels(s) << std::endl;  // Output: "UOIEA"
-    s = "DesignGUrus";
-    std::cout << sol.reverseVowels(s) << std::endl;  // Output: "DusUgnGires"
+    assert(sol.reverseVowels("hello") == "holle");
+    assert(sol.reverseVowels("AEIOU") == "UOIEA");
+    assert(sol.reverseVowels("DesignGUrus") == "DusUgnGires");
+    std::cout << "All test cases passed." << std::endl;
     return 0;
 }

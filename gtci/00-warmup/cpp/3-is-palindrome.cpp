@@ -22,24 +22,14 @@ class Solution {
     }
 };
 
+#include <cassert>
+
 int main() {
     Solution solution;
-    std::string testString = "A man, a plan, a canal: Panama";
-    if (solution.isPalindrome(testString)) {
-        std::cout << "\"" << testString << "\" is a palindrome." << std::endl;
-    } else {
-        std::cout << "\"" << testString << "\" is not a palindrome."
-                  << std::endl;
-    }
-
-    std::string anotherTestString = "Was it a car or a cat I saw?";
-    if (solution.isPalindrome(anotherTestString)) {
-        std::cout << "\"" << anotherTestString << "\" is a palindrome."
-                  << std::endl;
-    } else {
-        std::cout << "\"" << anotherTestString << "\" is not a palindrome."
-                  << std::endl;
-    }
+    assert(solution.isPalindrome("A man, a plan, a canal: Panama") == true);
+    assert(solution.isPalindrome("Was it a car or a cat I saw?") == true);
+    assert(solution.isPalindrome("race a car") == false);
+    std::cout << "All test cases passed." << std::endl;
 
     return 0;
 }

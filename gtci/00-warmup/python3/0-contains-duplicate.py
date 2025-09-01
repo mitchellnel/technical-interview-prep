@@ -11,6 +11,7 @@ def contains_duplicate(nums: list[int]) -> bool:
 
 
 if __name__ == "__main__":
-    print(contains_duplicate([1, 2, 3, 1]))  # True
-    print(contains_duplicate([1, 2, 3, 4]))  # False
-    print(contains_duplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]))  # True
+    assert contains_duplicate([1, 2, 3, 1]) == True
+    assert contains_duplicate([1, 2, 3, 4]) == False
+    assert contains_duplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]) == True
+    print("All test cases passed.")

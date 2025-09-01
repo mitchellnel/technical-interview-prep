@@ -19,14 +19,7 @@ def isPalindrome(s: str) -> bool:
 
 
 if __name__ == "__main__":
-    testString = "A man, a plan, a canal: Panama"
-    if isPalindrome(testString):
-        print(f'"{testString}" is a palindrome.')
-    else:
-        print(f'"{testString}" is not a palindrome.')
-
-    anotherTestString = "Was it a car or a cat I saw?"
-    if isPalindrome(anotherTestString):
-        print(f'"{anotherTestString}" is a palindrome.')
-    else:
-        print(f'"{anotherTestString}" is not a palindrome.')
+    assert isPalindrome("A man, a plan, a canal: Panama") == True
+    assert isPalindrome("Was it a car or a cat I saw?") == True
+    assert isPalindrome("race a car") == False
+    print("All test cases passed.")
