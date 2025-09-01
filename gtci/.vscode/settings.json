@@ -7,6 +7,7 @@
     "unordered_set": "cpp",
     "limits": "cpp",
     "algorithm": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "unordered_map": "cpp"
   }
 }
